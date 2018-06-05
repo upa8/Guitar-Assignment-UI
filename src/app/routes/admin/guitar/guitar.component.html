@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <!-- START row-->
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+                <!-- START panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <fieldset class="b0">
+                            <legend>Add Guitar</legend>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Brand Name</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" formControlName="brand_name" [formControl]="valForm.controls['brand_name']" />
+                                    <span class="text-danger" *ngIf="valForm.controls['brand_name'].hasError('required') && (valForm.controls['brand_name'].dirty || valForm.controls['brand_name'].touched)">This field is required</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small class="text-muted">Example- Yamaha, Kadence</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Model Name</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" formControlName="model_name" [formControl]="valForm.controls['model_name']" />
+                                    <span class="text-danger" *ngIf="valForm.controls['model_name'].hasError('required') && (valForm.controls['model_name'].dirty || valForm.controls['model_name'].touched)">This field is required</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small class="text-muted">Example- PAC611HFM, GS 1000</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Guitar type</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" formControlName="type" [formControl]="valForm.controls['type']">
+
+                                        <option value="Electric">Electric</option>
+                                        <option value="Acoustic">Acoustic</option>
+                                        <option value="Electro-acoustic">Electro-acoustic</option>
+                                        <option value="Twelve-string">Twelve-string</option>
+                                        <option value="Archtop">Archtop</option>
+                                        <option value="Steel">Steel</option>
+                                        <option value="Touch">Touch</option>
+                                        <option value="Resonator">Resonator </option>
+                                        <option value="Bass">Bass</option>
+                                        <option value="Double-neck">Double-neck</option>
+                                    </select>
+                                    <span class="text-danger" *ngIf="valForm.controls['type'].hasError('required') && (valForm.controls['type'].dirty || valForm.controls['type'].touched)">This field is required</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small class="text-muted"></small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Number of Strings</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="number" formControlName="string_number" [formControl]="valForm.controls['string_number']"
+                                    />
+                                    <span class="text-danger" *ngIf="valForm.controls['string_number'].hasError('required') && (valForm.controls['string_number'].dirty || valForm.controls['string_number'].touched)">This field is required</span>
+                                    <span class="text-danger" *ngIf="valForm.controls['string_number'].hasError('range') && (valForm.controls['string_number'].dirty || valForm.controls['string_number'].touched)">Number of strings in Guitar are from 3 to 26</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small class="text-muted">Example- 6, 12</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Price</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="number" formControlName="price" [formControl]="valForm.controls['price']" />
+                                    <span class="text-danger" *ngIf="valForm.controls['price'].hasError('required') && (valForm.controls['price'].dirty || valForm.controls['price'].touched)">This field is required</span>
+                                    <span class="text-danger" *ngIf="valForm.controls['price'].hasError('number') && (valForm.controls['price'].dirty || valForm.controls['price'].touched)">This field must be a valid number</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small class="text-muted">Example- 4876, 10999</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Purchase Date</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="date" formControlName="purchase_date" [formControl]="valForm.controls['purchase_date']"
+                                    />
+                                    <span class="text-danger" *ngIf="valForm.controls['purchase_date'].hasError('date') && (valForm.controls['purchase_date'].dirty || valForm.controls['purchase_date'].touched)">Enter a valid date</span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <button class="btn btn-info" type="submit">Add Guitar</button>
+                    </div>
+                </div>
+                <!-- END panel-->
+            </form>
+        </div>
+    </div>
+    <!-- END row-->
+</div>

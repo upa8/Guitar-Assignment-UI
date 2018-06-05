@@ -1,0 +1,48 @@
+<div class="container container-md">
+    <div class="container-md">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body" *ngIf="data">
+                        <fieldset class="b0">
+                            <legend>{{ data.brand_name || data.product_type }} {{ data.guitar_type || data.type }} Guitar {{ data.model_name
+                                }}
+                            </legend>
+                        </fieldset>
+                        <fieldset class="col-sm-6">
+                            <div class="form-group">
+                                <img class="img-responsive" [src]="data.image" alt="Product Image" />
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-sm-6">
+                            <div class="form-group">
+                                <h4>Brand Name : {{ data.brand_name || data.product_type}}</h4>
+                            </div>
+                            <div class="form-group">
+                                <h4>Guitar type : {{ data.guitar_type || data.type }}</h4>
+                            </div>
+                            <div class="form-group">
+                                <h4>Model name : {{ data.model_name || data.product_type }}</h4>
+                            </div>
+                            <div class="form-group" *ngIf="data.string_number">
+                                <h4>No of Strings: {{ data.string_number }}</h4>
+                            </div>
+
+                            <div class="form-group">
+                                <h3>Price :
+                                    <em class="fa fa-rupee"></em> {{ data.price }}
+                                </h3>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-info" (click)="addToMyCart()">Add in Cart</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <!-- END panel-->
+            </div>
+        </div>
+    </div>
+</div>

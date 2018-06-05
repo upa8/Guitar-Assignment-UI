@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="container-md">
+            <!-- Checkout Process-->
+            <form action="" method="post" novalidate="novalidate">
+                <accordion [closeOthers]="true" class="panel-group">
+                    <accordion-group #stepgroup1 [isOpen]="true" panelClass="b">
+                        <div accordion-heading>Order Review</div>
+                        <div id="collapse01">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <colgroup>
+                                        <col class="order-pic" span="1" />
+                                        <col class="order-item-name" span="1" />
+                                        <col class="order-qty" span="1" />
+                                        <col class="order-price" span="1" />
+                                        <col class="order-tax" span="1" />
+                                        <col class="order-total" span="1" />
+                                        <col class="order-actions" span="1" />
+                                    </colgroup>
+                                    <thead class="bg-gray-lighter">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Product Title</th>
+                                            <th class="wd-xs">Qty</th>
+                                            <th>Unit Price</th>
+                                            <th>Tax</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="6">Subtotal</td>
+                                            <td>
+                                                <em class="fa fa-rupee"></em>{{ total }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6">Shipping &amp; Handling (Free)</td>
+                                            <td>
+                                                <em class="fa fa-rupee"></em>0.00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6">Tax</td>
+                                            <td>
+                                                <em class="fa fa-rupee"></em>0.00
+                                            </td>
+                                        </tr>
+                                        <tr class="order-subtotal">
+                                            <td colspan="6">
+                                                <strong>ORDER TOTAL</strong>
+                                            </td>
+                                            <td>
+                                                <em class="fa fa-rupee"></em>{{ total }}
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr *ngFor="let item of data">
+                                            <td class="order-pic thumb64">
+                                                <img class="thumb64" [src]="item.image || 'assets/img/dummy.png'" />
+                                            </td>
+                                            <td class="order-item-name">{{ item.brand_name || item.product_type }} {{ item.guitar_type || item.type }}
+                                                Guitar {{ item.model_name }}
+                                            </td>
+                                            <td class="order-qty">
+                                                <input class="form-control" type="number" min="0" name="checkout-qty" [(ngModel)]="item.count" (change)="calculateTotal()"
+                                                />
+                                            </td>
+                                            <td class="order-price">
+                                                <em class="fa fa-rupee"></em>{{ item.price * item.count }}
+                                            </td>
+                                            <td class="order-tax">
+                                                Included in price
+                                            </td>
+                                            <td class="order-total">
+                                                <em class="fa fa-rupee"></em>{{ item.price * item.count }}
+                                            </td>
+                                            <td class="order-actions">
+                                                <button class="btn btn-danger" type="button" (click)="removeItem(item._id)">
+                                                    <em class="fa fa-trash fa-fw"></em>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="data.length === 0">
+                                            <p class="text-center">No product added yet!</p>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-lg">
+                                <button class="btn btn-info" type="button" (click)="stepgroup1.isOpen = true">Submit Order</button>
+                            </div>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </form>
+        </div>
+    </div>
+</div>

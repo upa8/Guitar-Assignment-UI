@@ -1,0 +1,40 @@
+<div class="container container-md">
+
+    <div class="input-group input-group-lg">
+        <input class="form-control input-lg radius-clear" type="text" name="term" placeholder="Search" [(ngModel)]="inputValue" style="width:70%"
+        />
+        <select class="form-control input-lg" style="width:30%" [(ngModel)]="selectValue">
+            <option value="type">By Product Type</option>
+            <option value="brand_name">By Brand Name</option>
+            <option value="model_name">By Model Name</option>
+        </select>
+        <span class="input-group-btn">
+            <button class="btn btn-info btn-lg b0 radius-clear" (click)="search()">
+                <strong>Search</strong>
+            </button>
+        </span>
+    </div>
+
+    <p class="mv-sm pv-sm text-muted text-center">
+        <small>Search products by name, brand name or model name;</small>
+    </p>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let item of data">
+            <div class="panel b" style="height: 290px;">
+                <a class="link-unstyled" [routerLink]="['/home', item._id]">
+                    <div class="panel-body text-center">
+                        <img class="center-block img-responsive thumb160" [src]="item.image || 'assets/img/user/02.jpg'" alt="Product Image" />
+                        <br/>
+                        <span class="h4 text-primary">{{ item.brand_name || item.product_type }}</span>
+                        <br/>
+                        <small class="text-muted">{{ item.guitar_type || item.type }} Guitar, {{ item.model_name }}</small>
+                        <p class="text-muted">
+                            <em class="fa fa-rupee"></em>
+                            <strong>{{ item.price }}</strong>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
